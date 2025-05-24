@@ -1,0 +1,127 @@
+
+const database = 'studentDB';
+const collection = 'aggregation';
+
+use(database);                 // Switches to or creates 'studentDB'
+// db.getCollection(collection).aggregate([
+//     {
+//         $project:{
+//             customer:1,
+//             amount:1,
+//             discount:{
+//                 $multiply:["$amount",0.1]
+//             },
+//             year:{$year:"$date"}
+//         }
+//     }
+// ])
+// db.getCollection(collection).aggregate([
+//     {
+//         $unwind:"$items"
+//         }
+// ])
+const c2="authors"
+ //db.getCollection(c2).insertOne({_id:"auth204",name:"Bob",speciality:"DBMS"});
+ //.getCollection(c2).insertOne({_id:"auth204",name:"John",speciality:"Node"})
+
+ const c3="books"
+//  db.getCollection(c3).insertMany([
+//     {_id:"b1",
+//         title:"DBMS",
+//         auth_id:"auth202"
+//     },
+//      {_id:"b2",
+//         title:"SQL",
+//         auth_id:"auth203"
+//     },
+//      {_id:"b3",
+//         title:"REACT",
+//         auth_id:"auth204"
+//     },
+//      {_id:"b4",
+//         title:"NODE",
+//         auth_id:"auth205"
+//     }
+
+//  ])
+// db.getCollection(collection).aggregate([
+//     {
+//         $lookup: {
+//           from: "customers",
+//           localField: "customers",
+//           foreignField:"_id",
+//           as:"cust_info"
+//         }
+//     }
+// ])
+//db.adminCommand('listDatabases');
+// db.getCollection(collection).aggregate([
+//     {
+//         $bucket: {
+//           groupBy: "$amount",
+//           boundaries: [ 10,20,30 ],
+//           default: "other",
+//           output: {
+//             count: { $sum:1 },
+//             orders:{$push:"$_id"}
+//           }
+//         }
+//     }
+// ])
+//db.getCollection(collection).createIndex({customer:2,amount:-1,items:1})
+//db.getCollection(collection).getIndexes()
+//db.getCollection(collection).find({customer:"john"},{customer:2})
+//db.getCollection(c3).find()
+
+// db.getCollection(c2).aggregate([
+//     {
+//         $lookup: {
+//             from: "books",
+//             localField: "_id",
+//             foreignField: "auth_id",
+//             as: "book_details"
+//         }
+//     },
+//     {
+//         $unwind: "$book_details"
+//     },
+//     {
+//         $project: {
+//             title: 1,
+//             "book_details.title": 1
+//         }
+//     }
+// ])
+// db.createCollection("forms", {
+//   validator: {
+//     $jsonSchema: {
+//       bsonType: "object",
+//       required: ["user_name", "email", "password"],
+//       properties: {
+//         user_name: {
+//           bsonType: "string",
+//           pattern: "[A-Za-z][0-9]{3}$",
+//           description: "Must be in format caps,small,numbers"
+//         },
+//         email: {
+//           bsonType: "string",
+//           pattern: "^[A-Za-z0-9._%+-]+@gmail\\.com$"
+
+        
+//         },
+//         password: {
+//           minLength:6,
+//           maxLength: 10
+//         },
+    
+//       }
+//     }
+//   }
+// });
+// db.getCollection("forms").insertOne({
+//     user_name:"S123",
+//     email:"Satwika1@gmail.com",
+//     password:"1234567"
+// })
+
+db.getCollection("forms").find()
