@@ -7,22 +7,34 @@ let stud=[
     {id:1,name:"sat",roll:"80"},
         {id:2,name:"jan",roll:"81"}
 ]
+
+app.use(express.json())
+const logger=(req,res,next)=>{
+    console.log(`${req.method},${req.url}`)
+    next()
+}
+app.use(logger)
+//urlencoded
+app.use(express.urlencoded({extended:true}))
+
 //get
 app.get('/stud',(req,res)=>{
  res.send(stud)
 })
 
 //get by id
-// app.get('/stud/:id',(req,res)=>{
-//     const id=parseInt(req.params.id)
-//     if(st){
-//         res.send(st)
-//     }
-//     else
-//     {
-//         res.status(404)
-//     }
-// })
+app.get('/stud/:id',(req,res)=>{
+    const id=parseInt(req.params.id)
+        const st=stud.find(s=>s.id==id)
+
+    if(st){
+        res.send(st)
+    }
+    else
+    {
+        res.status(404)
+    }
+})
 
 //fetch api
 // async function check() {
@@ -46,7 +58,9 @@ app.get('/stud',(req,res)=>{
 
 // }
 // check()
-
+app.post('/submit',(req,res)=>{
+   res.send(`${req.body.name}`)
+})
 //post
 app.post('/stud',(req,res)=>{
     const {name,roll}=req.body
